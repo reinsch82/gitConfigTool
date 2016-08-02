@@ -1,3 +1,5 @@
+package org.reinhold.git.ignore
+
 class GitIgnore {
 	File file
 	Set content = []
@@ -6,5 +8,8 @@ class GitIgnore {
 		this.file.eachLine { line ->
 			content.add(line)
 		}
+	}
+	def String toString() {
+		file.canonicalPath
 	}
 }
