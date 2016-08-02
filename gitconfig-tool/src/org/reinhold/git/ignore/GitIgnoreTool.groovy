@@ -19,13 +19,37 @@ class GitIgnoreTool {
         return d
     }
     
+	static printTree(Dir dir, indent = "", prepend = "") {
+		if(dir.ignoreFile instanceof GitIgnore) {
+			println indent + "* " + prepend + "/" + dir.dir.name
+			indent = "  " + indent
+			dir.ignoreFile.content.each {
+				println indent + "  " + it
+			}
+			dir.dirs.each { printTree(it, indent) }
+		}
+		else {
+			dir.dirs.each { printTree(it, indent, prepend + "/" + dir.dir.name) }
+		}
+	}
 
     static main(String... args) {
-        def path = args.size() == 0 ? "." : args[0]
-        
-        def dir = new File(path)
+		def path = args.find{!it.startsWith("--")}
+        path = path != null ? path : "."
+		def isOptimize = args.contains("--optimize")
+        def isPrint = args.contains("--print")
+		def dir = new File(path)
         def d = buildGitIgnoreTree(dir)
-        d.analyzeTree()
+        if(isPrint) {
+			printTree(d)	
+		}
+		else
+		if(isOptimize) {
+			
+		}
+		else {
+			d.analyzeTree()
+		}
     }
 
 }

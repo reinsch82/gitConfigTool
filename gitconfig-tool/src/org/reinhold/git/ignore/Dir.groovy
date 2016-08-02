@@ -39,8 +39,8 @@ class Dir {
 	
 	def findMatches(pattern) {
 		def p = pattern.replace(".", "\\.")
-		p = p.replaceAll("\\*\\*", ".*")
-		p = p.replaceAll("\\*", "[^/]*")
+		p = p.replaceAll("\\*\\*", "(([^/]*)/)*.*")
+		p = p.replaceAll("\\*", ".*")
 
 		def matches = [:]
 		ignoreFile.content.each {
