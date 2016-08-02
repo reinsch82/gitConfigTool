@@ -25,29 +25,7 @@ class GitIgnoreTool {
         
         def dir = new File(path)
         def d = buildGitIgnoreTree(dir)
-        def result = d.analyzeTree()
-//        result.each {
-//			print it.key + "\n"
-//			it.value.each { val ->
-//				print "  " + val.toString() + "\n"
-//			}
-//        }
-        
-
-//        def p = "/.*"
-//        def matched = java.util.regex.Pattern.matches(p, "/asdf")
-//        print matched        
-        
-//        dir.eachFileRecurse FileType.FILES, {
-//            if(it.name == ".gitignore") {
-//                files[it.getCanonicalFile()] = new GitIgnore(it.getCanonicalFile())
-//            } 
-//        }
-//        print "l " + d +"\n"
-//        print "l " + files +"\n"
-//        print "c " + dir.getCanonicalFile()+"\n"
-//        print "c " + dir.getCanonicalFile().getParent()+"\n"
-//        print dir.getParentFile().getName()
+        d.analyzeTree()
     }
 
 }
