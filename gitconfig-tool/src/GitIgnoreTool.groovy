@@ -1,7 +1,7 @@
 
 import groovy.io.FileType
 
-class GitConfigTool {
+class GitIgnoreTool {
 
 	static main(args) {
 		
